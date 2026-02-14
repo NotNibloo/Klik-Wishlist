@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "bun --watch src/index.ts",
-    "start": "bun src/index.ts"
+    "start": "bun src/index.ts",
+    "deploy:prod": "bun src/deploy-command.ts",
+    "deploy:dev": "bun src/deploy-command-dev.ts"
   },
   "peerDependencies": {
     "typescript": "^5"
