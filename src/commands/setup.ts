@@ -1,4 +1,8 @@
-import { SlashCommandBuilder, ChatInputCommandInteraction } from "discord.js";
+import {
+  SlashCommandBuilder,
+  ChatInputCommandInteraction,
+  PermissionFlagsBits,
+} from "discord.js";
 import type { Command } from "../types/Command";
 
 const command: Command = {
@@ -9,7 +13,11 @@ const command: Command = {
     ),
 
   async execute(interaction: ChatInputCommandInteraction) {
-    await interaction.reply("Setup");
+    if (interaction.memberPermissions?.has(PermissionFlagsBits.Administrator)) {
+      await interaction.reply("Setup");
+    } else {
+      await interaction.reply("You dont have permissions to do this command!");
+    }
   },
 };
 
