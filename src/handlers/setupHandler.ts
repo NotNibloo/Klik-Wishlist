@@ -1,5 +1,11 @@
-import { ChatInputCommandInteraction, AttachmentBuilder } from "discord.js";
+import {
+  ChatInputCommandInteraction,
+  AttachmentBuilder,
+  ActionRowBuilder,
+  ButtonBuilder,
+} from "discord.js";
 import { wishlistEmbed } from "../components/wishlistEmbed";
+import { redirectButton, wishlistButton } from "../components/wishlistButton";
 import path from "path";
 
 export async function setup(interaction: ChatInputCommandInteraction) {
@@ -10,5 +16,10 @@ export async function setup(interaction: ChatInputCommandInteraction) {
   interaction.reply({
     embeds: [wishlistEmbed],
     files: [banner],
+    components: [
+      new ActionRowBuilder<ButtonBuilder>()
+        .addComponents(wishlistButton)
+        .addComponents(redirectButton),
+    ],
   });
 }
