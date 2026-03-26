@@ -1,0 +1,5 @@
+import { ChatInputCommandInteraction } from "discord.js";
+
+export async function setup(interaction: ChatInputCommandInteraction) {
+  interaction.reply({});
+}
