@@ -4,6 +4,7 @@ import {
   PermissionFlagsBits,
 } from "discord.js";
 import type { Command } from "../types/Command";
+import { setup } from "../handlers/setupHandler";
 
 const command: Command = {
   data: new SlashCommandBuilder()
@@ -14,7 +15,7 @@ const command: Command = {
 
   async execute(interaction: ChatInputCommandInteraction) {
     if (interaction.memberPermissions?.has(PermissionFlagsBits.Administrator)) {
-      await interaction.reply("Setup");
+      await setup(interaction);
     } else {
       await interaction.reply("You dont have permissions to do this command!");
     }
